@@ -10,7 +10,7 @@ def paragraph_chunking(file_path):
             if content:
                 text += content + "\n"
 
-    paragraphs = [p.strip() for p in text.split('Article') if p.strip]
+    paragraphs = [p.strip() for p in text.split('CHAPTER') if len(p.strip()) > 100]
     return paragraphs
 
 chunks = paragraph_chunking('CELEX_32006L0054_EN_TXT.pdf') 
@@ -18,7 +18,7 @@ i = 1
 
 with open('output.txt', 'w') as output:
     for chunk in chunks:
-        output.write('chunk: ' + str(i) + ' ' + ''.join(chunk) + '\n')
+        output.write('chunk ' + str(i) + ' : ' + chunk + '\n')
         i+= 1
 
 print(chunks)
